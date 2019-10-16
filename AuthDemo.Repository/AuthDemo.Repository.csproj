@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4B922D44-ED94-441A-A460-A54338021210}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AuthDemo.Repository</RootNamespace>
+    <AssemblyName>AuthDemo.Repository</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Extended, Version=6.0.0.0, Culture=neutral, PublicKeyToken=05b7e29bdd433584, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.Extended.6.0.0.86\lib\net45\EntityFramework.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AuthDemoDBContext.cs" />
+    <Compile Include="BaseRepository.cs" />
+    <Compile Include="Core\Entity.cs" />
+    <Compile Include="Core\TreeEntity.cs" />
+    <Compile Include="Domain\Application.cs" />
+    <Compile Include="Domain\Category.cs" />
+    <Compile Include="Domain\CategoryType.cs" />
+    <Compile Include="Domain\FlowInstance.cs" />
+    <Compile Include="Domain\FlowInstanceOperationHistory.cs" />
+    <Compile Include="Domain\FlowInstanceTransitionHistory.cs" />
+    <Compile Include="Domain\FlowScheme.cs" />
+    <Compile Include="Domain\Form.cs" />
+    <Compile Include="Domain\Module.cs" />
+    <Compile Include="Domain\ModuleElement.cs" />
+    <Compile Include="Domain\Org.cs" />
+    <Compile Include="Domain\Relevance.cs" />
+    <Compile Include="Domain\Resource.cs" />
+    <Compile Include="Domain\Role.cs" />
+    <Compile Include="Domain\Stock.cs" />
+    <Compile Include="Domain\User.cs" />
+    <Compile Include="Domain\UserExt.cs" />
+    <Compile Include="Interface\IRepository.cs" />
+    <Compile Include="Interface\IUnitWork.cs" />
+    <Compile Include="Mapping\ApplicationMap.cs" />
+    <Compile Include="Mapping\CategoryMap.cs" />
+    <Compile Include="Mapping\CategoryTypeMap.cs" />
+    <Compile Include="Mapping\FlowInstanceMap.cs" />
+    <Compile Include="Mapping\FlowInstanceOperationHistoryMap.cs" />
+    <Compile Include="Mapping\FlowInstanceTransitionHistoryMap.cs" />
+    <Compile Include="Mapping\FlowSchemeMap.cs" />
+    <Compile Include="Mapping\FormMap.cs" />
+    <Compile Include="Mapping\ModuleElementMap.cs" />
+    <Compile Include="Mapping\ModuleMap.cs" />
+    <Compile Include="Mapping\OrgMap.cs" />
+    <Compile Include="Mapping\RelevanceMap.cs" />
+    <Compile Include="Mapping\ResourceMap.cs" />
+    <Compile Include="Mapping\RoleMap.cs" />
+    <Compile Include="Mapping\StockMap.cs" />
+    <Compile Include="Mapping\UserMap.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitWork.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{c6dcf266-b72c-4965-9f13-a1fadf6abe96}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

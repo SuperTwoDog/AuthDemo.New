@@ -1,0 +1,39 @@
+# 以'#'开始的行，被视为注释.
+
+# 忽略掉packages文件夹
+
+/packages
+
+
+# 忽略掉bin文件夹
+
+/bin
+
+# 忽略掉Common项目bin、obj文件夹
+/AuthDemo.App/bin/Debug
+/AuthDemo.App/obj/Debug
+/AuthDemo.App/bin/Release
+/AuthDemo.App/obj/Release
+
+# 忽略掉Entity项目bin、obj文件夹
+/Infrastructure/bin/Debug
+/Infrastructure/obj/Debug
+/Infrastructure/bin/Release
+/Infrastructure/obj/Release
+
+# 忽略掉WebAPI1项目bin、obj文件夹
+/AuthDemo.WebApi/bin
+/AuthDemo.WebApi/Debug
+/AuthDemo.WebApi/obj/Debug
+
+# 忽略掉WebUI项目bin、obj文件夹  
+/AuthDemo.Mvc/bin
+/AuthDemo.Mvc/obj/Debug
+/AuthDemo.Mvc/obj/Release
+
+# 忽略掉Repository项目bin、obj文件夹
+/AuthDemo.Repository/bin/Debug
+/AuthDemo.Repository/obj/Debug
+/AuthDemo.Repository/bin/Release
+/AuthDemo.Repository/obj/Release
+

@@ -1,0 +1,64 @@
+﻿@model AuthDemo.App.Response.UserView
+@{
+    ViewBag.Title = "编辑用户信息";
+}
+<meta   http-equiv="Pragma"   content="no-cache" />
+<meta   http-equiv="Cache-Control"   content="no-cache" />
+<meta   http-equiv="Expires"   content="0" />
+<div id="divEdit">
+    <form class="layui-form layui-form-pane UserEdit" id="formEdit">
+        <input type="hidden" name="Id" v-model="Id" value="@Model.Id" />
+        <div class="layui-form-item">
+            <label class="layui-form-label">账号</label>
+            <div class="layui-input-block">
+                <input type="text" id="Account" name="Account" v-model="Account" required lay-verify="required" placeholder="请输入登录账号" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-block">
+                <input type="text" name="Name" v-model="Name" required lay-verify="required" placeholder="请输入昵称或姓名" autocomplete="off" class="layui-input" value="@Model.Name">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">所属部门</label>
+            <div class="layui-input-block">
+                <input id="Organizations" name="Organizations" v-model="Organizations" required lay-verify="required" class="layui-input" autocomplete="off"  value="@Model.Organizations"/>
+                <input id="OrganizationIds" name="OrganizationIds" v-model="OrganizationIds" required lay-verify="required" type="hidden" value="@Model.OrganizationIds" />
+                <div id="menuContent" class="menuContent" style="display: none;">
+                    <ul id="org" class="ztree"></ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item" pane>
+            <label class="layui-form-label">性别</label>
+            <div class="layui-input-block">
+                <input type="radio" name="Sex" value="1" title="男" checked>
+                <input type="radio" name="Sex" value="0" title="女">
+            </div>
+        </div>
+        <div class="layui-form-item" pane>
+            <label class="layui-form-label">是否启用</label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="Status" v-model="Status" lay-skin="switch" value="1">
+            </div>
+        </div>
+        <div class="layui-form-item" pane>
+            <label class="layui-form-label">个人说明</label>
+            <div class="layui-input-block">
+                <textarea placeholder="请输入用户简介" name="Description" v-model="Description" class="layui-textarea userDesc">@Model.Description</textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block" style="text-align:center; margin-left:0px;">
+                <button class="layui-btn" lay-submit lay-filter="formSubmit">保存</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/layui/layui.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/userJs/users.js")"></script>

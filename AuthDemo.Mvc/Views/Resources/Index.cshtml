@@ -1,0 +1,102 @@
+﻿@section header
+{
+    <link rel="stylesheet" href="@Url.Content("~/Content/Css/treetable.css")" media="all" />
+}
+<blockquote class="layui-elem-quote news_search toolList">
+    <div class="layui-col-md3">
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input searchVal" placeholder="请输入搜索的内容" />
+        </div>
+        <div class="layui-input-inline" style="width:130px;">
+            <div class="layui-form">
+                <select name="interest" lay-filter="selStatus" id="selStatus">
+                    <option value="0">是否可用</option>
+                    <option value="1" selected="selected">正常</option>
+                    <option value="2">已禁用</option>
+                </select>
+            </div>
+        </div>
+        <a class="layui-btn search_btn" id="btnSerach" data-type="reload">搜索</a>
+    </div>
+    <div id="menus">
+    </div>
+</blockquote>
+<div class="layui-card">
+    <table class="layui-table" lay-data="{height: 'full-80', page:true, id:'mainList'}" lay-filter="list">
+        <thead>
+            <tr>
+                <th lay-data="{checkbox:true, fixed: true}"></th>
+                <th lay-data="{field:'Id', align:'center'}">资源标识</th>
+                <th lay-data="{field:'Name', width:200, align:'center'}">名称</th>
+                <th lay-data="{field:'Disable', width:150, templet:'#Disable', align:'center'}">是否可用</th>
+                <th lay-data="{field:'SortNo', width:100, align:'center'}">排序</th>
+                <th lay-data="{field:'Description', width:300, align:'center'}">描述</th>
+                <th lay-data="{field:'AppName', width:150, align:'center'}">所属应用</th>
+                <th lay-data="{field:'TypeName', width:150, align:'center'}">分类名称</th>
+                <th lay-data="{fixed: 'right', width:160, align:'center', toolbar: '#userBar'}">操作</th>
+            </tr>
+        </thead>
+    </table>
+    <script type="text/html" id="Disable">
+        {{# if(d.Disable){ }}
+        <span class="layui-badge">已禁用</span>
+        {{# } else{}}
+        <span class="layui-badge layui-bg-green">正常</span>
+        {{# } }}
+    </script>
+    <!--操作-->
+    <script type="text/html" id="userBar">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        {{#  if(d.Disable){ }}
+        <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="active">启用</a>
+        {{#  }else { }}
+        <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">禁用</a>
+        {{#  }}}
+
+    </script>
+</div>
+<!--添加/编辑窗口-->
+<div id="divEdit" style="display: none">
+    <form class="layui-form layui-form-pane" action="" id="formEdit">
+        <div class="layui-form-item">
+            <label class="layui-form-label">资源标识</label>
+            <div class="layui-input-block">
+                <input type="text" name="Id" v-model="Id" required lay-verify="required"
+                       placeholder="名称" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="Name" v-model="Name" required lay-verify="required"
+                       placeholder="名称" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">所属应用</label>
+            <div class="layui-input-block">
+                <input id="AppName" name="AppName" v-model="AppName" class="layui-input" />
+                <input id="AppId" name="AppId" v-model="AppId" type="hidden" />
+                <div id="menuContent" class="menuContent" style="display: none;">
+                    <ul id="org" class="ztree"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item" pane>
+            <label class="layui-form-label">应用描述</label>
+            <div class="layui-input-block">
+                <textarea placeholder="请输入应用描述" name="Description" v-model="Description" lay-verify="required" autocomplete="off" class="layui-textarea userDesc"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block" style="text-align:center; margin-left:0px;">
+                <button class="layui-btn" lay-submit lay-filter="formSubmit">保存</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/layui/layui.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/userJs/resources.js")"></script>
+
